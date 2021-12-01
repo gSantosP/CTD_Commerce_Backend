@@ -8,11 +8,11 @@
 		<version>2.6.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.dh.ctd_comerce_backend</groupId>
-	<artifactId>ctd_comerce</artifactId>
+	<groupId>com.checkpoint</groupId>
+	<artifactId>CTD-Commerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ctd_comerce</name>
-	<description>Demo project for Spring Boot</description>
+	<name>CTD-Commerce</name>
+	<description>Checkpoint integrador.</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -39,6 +39,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
 		</dependency>
 	</dependencies>
 
