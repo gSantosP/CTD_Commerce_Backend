@@ -27,9 +27,9 @@ public class Product {
     private String image;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_categories")
-    private Categories categories;
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -71,11 +71,11 @@ public class Product {
         this.image = image;
     }
 
-    public Categories getCategories() {
-        return categories;
+    public Category getCategories() {
+        return category;
     }
 
-    public void setCategories(Categories categories) {
-        this.categories = categories;
+    public void setCategories(Category category) {
+        this.category = category;
     }
 }

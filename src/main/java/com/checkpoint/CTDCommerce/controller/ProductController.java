@@ -1,8 +1,8 @@
 package com.checkpoint.CTDCommerce.controller;
 
-import com.checkpoint.CTDCommerce.model.Categories;
+import com.checkpoint.CTDCommerce.model.Category;
 import com.checkpoint.CTDCommerce.model.Product;
-import com.checkpoint.CTDCommerce.service.CategoriesService;
+import com.checkpoint.CTDCommerce.service.CategoryService;
 import com.checkpoint.CTDCommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,37 +16,40 @@ import java.util.List;
 public class ProductController {
 
     private ProductService productService;
-    private CategoriesService categoriesService;
+    private CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService, CategoriesService categoriesService) {
+    public ProductController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
-        this.categoriesService = categoriesService;
+        this.categoryService = categoryService;
     }
 
     @PostMapping
-    public ResponseEntity<Product> postarProduto(@RequestBody Product product){
+    public ResponseEntity<Product> postarProduto(@RequestBody Product product) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(product));
     }
 
+
     @GetMapping
-    public List<Product> getAllProducts() {
-        return productService.buscarTodos();
+    public ResponseEntity<List<Product>> getAllProducts() {
+        return ResponseEntity.ok(productService.buscarTodos());
     }
 
     @GetMapping("/{id}")
-    public Product getProduct(Integer id) {
-        return productService.buscarPeloId(id);
+    public ResponseEntity<Product> getProduct(@PathVariable Integer id) {
+        return productService.buscarPeloId(id).map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/categories")
-    public List<Categories> getAllCategories() {
-        return categoriesService.buscarTodas();
+    @GetMapping("/categorias")
+    public ResponseEntity<List<Category>> getAllCategories() {
+        return ResponseEntity.ok(categoryService.buscarTodas());
     }
 
-    //buscar todos os produtos por categoria
-//    @GetMapping("/categories/{name}")
-//    public List<Product> getProductsByCategory(String name) {
-//        return productService.buscarProdutosPorCategoria(name);
-//    }
+   @GetMapping("/categorias/{name}")
+  public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String name) {
+
+        return ResponseEntity.ok(productService.buscarProdutosPorCategoria(name));
+  }
+
 }

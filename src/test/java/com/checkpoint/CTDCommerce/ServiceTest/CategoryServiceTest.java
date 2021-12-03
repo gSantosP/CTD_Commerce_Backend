@@ -1,13 +1,8 @@
 package com.checkpoint.CTDCommerce.ServiceTest;
 
-import com.checkpoint.CTDCommerce.model.Categories;
-import com.checkpoint.CTDCommerce.model.NameCategories;
-import com.checkpoint.CTDCommerce.model.Product;
-import com.checkpoint.CTDCommerce.repository.CategoriesRepository;
-import com.checkpoint.CTDCommerce.service.CategoriesService;
+import com.checkpoint.CTDCommerce.service.CategoryService;
 import com.checkpoint.CTDCommerce.service.ProductService;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,13 +11,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 //@RunWith(SpringRunner.class)
-public class CategoriesServiceTest {
+public class CategoryServiceTest {
 
     @Autowired
     private ProductService productService;
 
     @Autowired
-    private CategoriesService categoriesService;
+    private CategoryService categoryService;
 
 //    @BeforeEach
 //    public void teste() {
@@ -81,6 +76,6 @@ public class CategoriesServiceTest {
     @Test
     public void buscarProduto(){
         assertThat(productService).isNotNull();
-        assertThat(categoriesService).isNotNull();
+        assertThat(categoryService).isNotNull();
     }
 }

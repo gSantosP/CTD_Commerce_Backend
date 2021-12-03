@@ -1,36 +1,36 @@
 package com.checkpoint.CTDCommerce.service;
 
-import com.checkpoint.CTDCommerce.model.Categories;
-import com.checkpoint.CTDCommerce.repository.CategoriesRepository;
+import com.checkpoint.CTDCommerce.model.Category;
+import com.checkpoint.CTDCommerce.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoriesService {
+public class CategoryService {
 
-    private CategoriesRepository repository;
+    private CategoryRepository repository;
 
     @Autowired
-    public CategoriesService(CategoriesRepository repository) {
+    public CategoryService(CategoryRepository repository) {
         this.repository = repository;
     }
     //Continuar
     //public Categories savar(Categories)
 
     // End-point "c" retorna uma lista de categorias cadastradas
-    public List<Categories> buscarTodas(){
+    public List<Category> buscarTodas(){
         return repository.findAll();
     }
 
     //metodo para salvar um categoria
-    public Categories save(Categories categories) {
-        return repository.save(categories);
+    public Category save(Category category) {
+        return repository.save(category);
     }
 
     //metodo para buscar uma categoria por Id
-    public Categories buscarPorId (Integer id){
+    public Category buscarPorId (Integer id){
         return repository.findById(id).get();
     }
 }
