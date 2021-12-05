@@ -1,6 +1,8 @@
 package com.checkpoint.CTDCommerce.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,11 +26,12 @@ public class Product {
     private String description;
 
     @NotNull
-    private String image;
+    private String imageUrl;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_categories")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoriy_id")
+    @JsonIgnoreProperties("products")
     private Category category;
 
     public Integer getId() {
@@ -63,19 +66,19 @@ public class Product {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public Category getCategories() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategories(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }
