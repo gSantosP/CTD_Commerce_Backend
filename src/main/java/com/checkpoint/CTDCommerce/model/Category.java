@@ -1,15 +1,10 @@
 package com.checkpoint.CTDCommerce.model;
 
-
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name ="categories", uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
 public class Category {
 
     @Id

@@ -1,7 +1,7 @@
 package com.checkpoint.CTDCommerce.model;
 
 public enum CategoryName {
-    ELETRONICS("Eletrônocos"),
+    ELETRONICS("Eletrônicos"),
     JEWELERY("Joalheria"),
     MENS_CLOTHING("Roupas Masculinas"),
     WOMENS_CLOTHING("Roupas Femininas");
